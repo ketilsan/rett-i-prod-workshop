@@ -1,12 +1,10 @@
 import express from 'express';
+import { superImportantService } from "../controller/super-important-service";
 
 const router = express.Router();
 
 router.get('/', function(req, res, next) {
-    const json = {
-        "hello": "world 2"
-    };
-    res.send(json)
+    res.send(superImportantService())
 });
 
 export default router
