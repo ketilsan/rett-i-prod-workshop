@@ -26,10 +26,3 @@ phases:
     commands:
       - echo Entered the post_build phase...
       - echo Build completed on `date`
-
-reports:
-  arn:aws:codebuild:eu-west-1:365555321490:report-group/myReportGroup:
-    files:
-      - "**/*"
-    base-directory: 'target/tests/reports'
-    discard-paths: no
