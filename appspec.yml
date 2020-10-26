@@ -3,30 +3,8 @@ os: linux
 files:
   - source: /
     destination: /tmp
-
 permissions:
   - object: /
       pattern: "**"
-      owner: deployer
-      group: deployer
-
-hooks:
-ApplicationStop:
-  - location: bin/app-stop
-    timeout: 10
-    runas: deployer
-
-AfterInstall:
-  - location: bin/install-pkgs
-    timeout: 1200
-    runas: deployer
-
-ApplicationStart:
-  - location: bin/app-start
-    timeout: 60
-    runas: deployer
-
-ValidateService:
-  - location: bin/app-validate
-    timeout: 10
-    runas: deployer
+      owner: ec2-user
+      group: ec2-user
