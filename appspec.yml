@@ -7,26 +7,26 @@ files:
 permissions:
   - object: /
       pattern: "**"
-      owner: ec2-user
-      group: ec2-user
+      owner: deployer
+      group: deployer
 
 hooks:
 ApplicationStop:
   - location: bin/app-stop
     timeout: 10
-    runas: ec2-user
+    runas: deployer
 
 AfterInstall:
   - location: bin/install-pkgs
     timeout: 1200
-    runas: ec2-user
+    runas: deployer
 
 ApplicationStart:
   - location: bin/app-start
     timeout: 60
-    runas: ec2-user
+    runas: deployer
 
 ValidateService:
   - location: bin/app-validate
     timeout: 10
-    runas: ec2-user
+    runas: deployer
