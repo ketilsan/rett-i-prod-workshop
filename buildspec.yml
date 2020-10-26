@@ -30,6 +30,4 @@ phases:
 
 artifacts:
   files:
-    - dist-server/**/*
-    - appspec.yml
     - app.zip
