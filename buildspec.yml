@@ -26,7 +26,7 @@ phases:
     commands:
       - echo Entered the post_build phase...
       - echo Build completed on `date`
-      - zip -r app.zip dist-server
+      - zip -r app.zip dist-server appspec.yml
 
 artifacts:
   files:
