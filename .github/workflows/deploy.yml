@@ -27,4 +27,4 @@ jobs:
 
 
       - name: Deploy backend to heroku
-        run: git push --force heroku master
+        run: git push --force heroku HEAD:master
