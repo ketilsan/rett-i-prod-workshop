@@ -30,14 +30,14 @@ jobs:
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       with:
-        status: "Build Success :heavy_check:mark:"
+        status: "Build Success :heavy_check:mark: \:heavy_check:mark\: "
         channel: '#chatops-test'
       if: success()
     - uses: act10ns/slack@v1.0.9
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       with:
-        status: "Build Success :heavy_check:mark:"
+        status: "Build Failed bigtime :sadparrot: \:sadparrot\: "
         channel: '#chatops-test'
       if: failure()
 
@@ -63,6 +63,6 @@ jobs:
        env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
        with:
-         status: ${{ job.status }}
+         status: "Deploy finished with status: " + ${{ job.status }}
           # Override default channel with different channel or username
          channel: '#chatops-test'
