@@ -66,6 +66,6 @@ jobs:
        env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
        with:
-         status: "Deploy finished with status: " + ${{ job.status }}
+         status: ${{ job.status }}
           # Override default channel with different channel or username
          channel: '#chatops-test'
