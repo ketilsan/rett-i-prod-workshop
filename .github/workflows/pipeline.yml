@@ -41,7 +41,14 @@ jobs:
 
      - name: Deploy backend to heroku
        run: git push --force heroku HEAD:master
-
-     - name: Slack Bot Action
-       uses: krider2010/slack-bot-action@1.0.1
-
+       
+     - name: slack - GitHub Actions Slack integration
+        # You may pin to the exact commit or the version.
+        # uses: act10ns/slack@a59542b0f7f766e6b16c9c6bf433ecd2f2f35f06
+       uses: act10ns/slack@v1.0.9
+       env:
+         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+       with:
+         status: ${{ job.status }}
+          # Override default channel with different channel or username
+         channel: '#chatops-test'
