@@ -26,6 +26,10 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - uses: act10ns/slack@v1.0.9
+      with:
+        status: "Build Success :heavy_check:mark:"
+        channel: '#chatops-test'
 
   deploy:
     name: Deploy
@@ -41,7 +45,7 @@ jobs:
 
      - name: Deploy backend to heroku
        run: git push --force heroku HEAD:master
-       
+
      - name: slack - GitHub Actions Slack integration
         # You may pin to the exact commit or the version.
         # uses: act10ns/slack@a59542b0f7f766e6b16c9c6bf433ecd2f2f35f06
