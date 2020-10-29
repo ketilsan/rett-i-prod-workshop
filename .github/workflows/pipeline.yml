@@ -26,18 +26,21 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@master
+      env:
+        SLACK_CHANNEL: chatops-test
+        SLACK_COLOR: '#3278BD'
+        SLACK_ICON: https://images.homedepot-static.com/productImages/81e74102-faa7-438a-a45a-d1fbdecee879/svn/electronics-cleaning-care-ac1016a-ys-64_1000.jpg
+        SLACK_MESSAGE: 'Mye tøffere chatops :rocket: :score :win :first'
+        SLACK_TITLE: More chat more ops!
+        SLACK_USERNAME: Yellow Submarine
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
     - uses: act10ns/slack@v1.0.9
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       with:
-        status: "Build Success :heavy_check:mark: \:heavy_check:mark\: "
-        channel: '#chatops-test'
-      if: success()
-    - uses: act10ns/slack@v1.0.9
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      with:
-        status: "Build Failed bigtime :sadparrot: \:sadparrot\: "
+        status: "Build Failed bigtime :sadparrot: "
         channel: '#chatops-test'
       if: failure()
 
