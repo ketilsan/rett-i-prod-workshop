@@ -41,3 +41,6 @@ jobs:
 
      - name: Deploy backend to heroku
        run: git push --force heroku HEAD:master
+
+     - name: Slack
+       run: "curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"Succesfully deployed new version to Heroku - https://rettiprod.herokuapp.com/\"}' https://hooks.slack.com/services/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"
