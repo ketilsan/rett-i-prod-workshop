@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [14.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -32,6 +32,14 @@ jobs:
       with:
         status: "Build Success :heavy_check:mark:"
         channel: '#chatops-test'
+      if: success()
+    - uses: act10ns/slack@v1.0.9
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    with:
+      status: "Build Success :heavy_check:mark:"
+      channel: '#chatops-test'
+    if: failure()
 
   deploy:
     name: Deploy
